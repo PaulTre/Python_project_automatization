@@ -16,10 +16,10 @@ class Http_methods:
 
     @staticmethod
     def put(url, body):
-        result = requests.put(url, headers=Http_methods.headers, cookies=Http_methods.cookie)
+        result = requests.put(url, json=body, headers=Http_methods.headers, cookies=Http_methods.cookie)
         return result
 
     @staticmethod
     def delete(url, body):
-        result = requests.delete(url, headers=Http_methods.headers, cookies=Http_methods.cookie)
+        result = requests.delete(url,json=body, headers=Http_methods.headers, cookies=Http_methods.cookie)
         return result
