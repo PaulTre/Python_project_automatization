@@ -61,7 +61,7 @@ class Google_maps_api():
         print(put_url)
         json_body_for_change = {
             "place_id": place_id,
-            "address": "1 Lenina street, RU",
+            "address": "100 Lenina street, RU",
             "key": "qaclick123"
 
         }
