@@ -1,10 +1,12 @@
+from http.client import responses
+
 
 from utils.http_method import Http_methods
 
 """Методы для тестирования API Google maps"""
 
 base_url = "https://rahulshettyacademy.com"           #Базовая url которые мы используем везде
-key = "key=qaclick123"                               #Параметр который мы используем во всех методах
+key = "?key=qaclick123"                               #Параметр который мы используем во всех методах
 
 class Google_maps_api():
 
@@ -47,3 +49,36 @@ class Google_maps_api():
         result_get = Http_methods.get(get_url)
         print(result_get.text)
         return result_get
+
+
+    """Метод изменения созданной локации"""
+
+    @staticmethod
+    def put_create_place(place_id):
+
+        put_resource = "/maps/api/place/update/json" #Ресурс метода PUT
+        put_url = base_url + put_resource + key
+        print(put_url)
+        json_body_for_change = {
+            "place_id": place_id,
+            "address": "1 Lenina street, RU",
+            "key": "qaclick123"
+
+        }
+        result_put = Http_methods.put(put_url, json_body_for_change)
+        print(result_put.text)
+        return result_put
+
+        """Метод Удаления созданной локации"""
+
+    @staticmethod
+    def delete_location(place_id):
+        delete_resource = "/maps/api/place/delete/json"
+        delete_url = base_url + delete_resource + key
+        json_body_for_delete = {
+            "place_id": place_id
+
+        }
+        result_delete = Http_methods.delete(delete_url, json_body_for_delete)
+        print(result_delete.text)
+        return result_delete
